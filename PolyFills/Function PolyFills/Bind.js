@@ -1,4 +1,4 @@
-𝗡𝗼𝗿𝗺𝗮𝗹 𝗯𝗶𝗻𝗱 𝗺𝗲𝘁𝗵𝗼𝗱
+// 𝗡𝗼𝗿𝗺𝗮𝗹 𝗯𝗶𝗻𝗱 𝗺𝗲𝘁𝗵𝗼𝗱
 let person = {
   name: "amit",
   age: 26,
@@ -13,7 +13,7 @@ function render(address, quote) {
 const renderReturnFunc1 = render.bind(person,"dkl");
 renderReturnFunc1("Hello")
 
-𝗣𝗼𝗹𝘆𝗳𝗶𝗹𝗹 𝗼𝗳 𝗯𝗶𝗻𝗱
+// 𝗣𝗼𝗹𝘆𝗳𝗶𝗹𝗹 𝗼𝗳 𝗯𝗶𝗻𝗱
 Function.prototype.mybind = function (obj,...arg1) {
   if (typeof this !== "function") {
     throw Error("it's not function");

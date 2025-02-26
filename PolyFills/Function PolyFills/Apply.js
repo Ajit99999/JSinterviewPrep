@@ -1,4 +1,4 @@
-𝗡𝗼𝗿𝗺𝗮𝗹𝗹 𝗖𝗮𝗹𝗹 𝗠𝗲𝘁𝗵𝗼𝗱
+// 𝗡𝗼𝗿𝗺𝗮𝗹 𝗔𝗽𝗽𝗹𝘆 𝗺𝗲𝘁𝗵𝗼𝗱
 let person = {
   name: "amit",
   age: 26,
@@ -10,10 +10,10 @@ function render(address, quote) {
   );
 }
 
-render.call(person, "dkl", "Hello");
+render.apply(person,["dkl", "Hello"]);
 
-𝗣𝗼𝗹𝘆𝗙𝗶𝗹𝗹 𝗼𝗳 𝗖𝗮𝗹𝗹
-Function.prototype.mycall = function (obj, ...arg) {
+// 𝗣𝗼𝗹𝘆𝗳𝗶𝗹𝗹 𝗼𝗳 𝗮𝗽𝗽𝗹𝘆
+Function.prototype.myapply = function (obj,arg) {
   if (typeof this !== "function") {
     throw Error("it's not function");
   }
@@ -21,4 +21,4 @@ Function.prototype.mycall = function (obj, ...arg) {
   obj.fn(...arg);
 };
 
-render.mycall(person, "dkl", "Hello");
+render.myapply(person, ["dkl", "Hello"]);
