@@ -17,11 +17,15 @@ const obj2 = {
 };
 
 //  more cleaner code
-function isEqual(arg1, arg2) {
+function isEqual(arg1, arg2, visited) {
   if (typeof arg1 !== typeof arg2) {
     return false;
   }
 
+  if (arg1 === null || arg2 === null) {
+    return Object.is(arg1, arg2);
+  }
+ 
   if (
     typeof arg1 !== "object" &&
     typeof arg2 !== "object" &&
@@ -31,10 +35,27 @@ function isEqual(arg1, arg2) {
     return Object.is(arg1, arg2);
   }
 
-  if (arg1 === null && arg2 === null) {
-    return Object.is(arg1, arg2);
+  if (visited.has(arg1)) {
+    return visited.get(arg1) === arg2;
+  }
+  visited.set(arg1, arg2);
+
+  if (Array.isArray(arg1) && Array.isArray(arg2)) {
+    if (arg1.length !== arg2.length) {
+      return false;
+    }
+    for (let i = 0; i <= arg1.length - 1; i++) {
+      if (!isEqual(arg1[i], arg2[i], visited)) {
+        return false;
+      }
+    }
+
+    return true;
   }
 
+  if (Array.isArray(arg1) !== Array.isArray(arg2)) {
+    return false;
+  }
   const key1 = Object.keys(arg1);
   const key2 = Object.keys(arg2);
 
@@ -46,7 +67,7 @@ function isEqual(arg1, arg2) {
     if (!key2.includes(key)) {
       return false;
     }
-    if (!isEqual(arg1[key], arg2[key])) {
+    if (!isEqual(arg1[key], arg2[key], visited)) {
       return false;
     }
   }
