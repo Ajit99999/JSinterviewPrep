@@ -113,14 +113,6 @@ function promiseRace(arrayOfPromises) {
   });
 }
 
-// Promise.race([task1(), task2(), task3()])
-//   .then((data) => {
-//     console.log(data, "data race promise");
-//   })
-//   .catch((err) => {
-//     console.log(err, "error race promise");
-//   });
-
 // promiseRace([task1, task2, task3])
 //   .then((data) => {
 //     console.log(data, "data race custom promise");
